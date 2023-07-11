@@ -1,9 +1,9 @@
-<h1 style="text-align: center;">
+<h1 align="center">
   TODO List ✅
 </h1>
 
 <p align="center">
- <img src="https://img.shields.io/static/v1?label=Java&message=Spring+Boot&color=89D73F&labelColor=000000" alt="Spring Boot" />
+ <img src="https://img.shields.io/static/v1?label=Java&message=Spring+Boot&color=89D73F&labelColor=000000&messageColor=000000" alt="Spring Boot" />
  <img src="https://img.shields.io/static/v1?label=Tipo&message=Desafio&color=8257E5&labelColor=000000" alt="Desafio" />
 </p>
 
