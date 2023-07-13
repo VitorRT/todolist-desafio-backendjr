@@ -54,7 +54,7 @@ public class TodoController {
         return ResponseEntity.ok(todoService.list());
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     @Operation(
         summary = "Atualização de tarefa.",
         description = "Atualização de tarefa no banco de dados."
@@ -64,8 +64,8 @@ public class TodoController {
         @ApiResponse(responseCode = "400", description = "Os dados enviados são inválidos..")
     }
     )
-    ResponseEntity<List<TodoResponse>> update(@RequestBody @Valid TodoRequest todoRequest) {
-        return ResponseEntity.ok(todoService.update(todoRequest));
+    ResponseEntity<List<TodoResponse>> update(@RequestBody @Valid TodoRequest todoRequest, @PathVariable("id") UUID id) {
+        return ResponseEntity.ok(todoService.update(todoRequest, id));
     }
 
     @DeleteMapping("{id}")

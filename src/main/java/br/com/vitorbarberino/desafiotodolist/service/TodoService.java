@@ -32,20 +32,26 @@ public class TodoService {
        return todoRepository.findAll(sort).stream().map(this::toTodoResponse).toList();
     }
 
-    public List<TodoResponse> update(TodoRequest todoRequest) {
-        todoRepository.save(new Todo(todoRequest));
+    public List<TodoResponse> update(TodoRequest todoRequest, UUID id) {
+        Todo todo =  getTodo(id);
+        todo.setId(id);
+        todoRepository.save(todo);
         return list();
     }
 
     public List<TodoResponse> delete(UUID id) {
-        Todo todo = todoRepository.findById(id).orElseThrow(
-            () -> new RuntimeException("Nenhum existe nenhuma tarefa com o id informado.")
-        );
+        Todo todo = getTodo(id);
         todoRepository.delete(todo);
         return list();
     }
 
     private TodoResponse toTodoResponse(Todo todo) {
         return new TodoResponse(todo);
+    }
+
+    private Todo getTodo(UUID id) {
+        return todoRepository.findById(id).orElseThrow(
+            () -> new RuntimeException("Nenhum existe nenhuma tarefa com o id informado.")
+        );
     }
 }
